@@ -18,11 +18,9 @@ INSERT INTO department(id, name, parentid) VALUES (12, 'Additional department 7'
 
 INSERT INTO employee(firstname, lastname, gender, driverlicense, departmentid) VALUES ('Wimbledon', 'Tennismatch', 0, 'af3af2sdf', 2);
 INSERT INTO employee(firstname, lastname, gender, driverlicense, departmentid) VALUES ('Congleton', 'Banglesnatch', 0, 'af3af2sdf', 3);
-INSERT INTO employee (firstname, lastname, gender, driverlicense, departmentid)
-VALUES ('Buttercup', 'Chesterfield', 0, 'af3af2sdf', 9);
+INSERT INTO employee (firstname, lastname, gender, driverlicense, departmentid) VALUES ('Buttercup', 'Chesterfield', 0, 'af3af2sdf', 9);
 INSERT INTO employee(firstname, lastname, gender, departmentid) VALUES ('Brewery', 'Crumplehorn', 1, 4);
-INSERT INTO employee (firstname, lastname, middlename, gender, driverlicense, departmentid)
-VALUES ('Budapest', 'Ampersand', 'Candygram', 0, 'af3af2sdf', 9);
+INSERT INTO employee (firstname, lastname, middlename, gender, driverlicense, departmentid) VALUES ('Budapest', 'Ampersand', 'Candygram', 0, 'af3af2sdf', 9);
 INSERT INTO employee(firstname, lastname, middlename, gender, driverlicense, departmentid) VALUES ('Anglerfish', 'Coggleswort', 'Colonist', 1, 'af3af2sdf', 7);
 INSERT INTO employee(firstname, lastname, middlename, gender, departmentid) VALUES ('Benadryl', 'Claritin', 'Countryside', 0, 2);
 

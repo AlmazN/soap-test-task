@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="c3cc1e02-c8b1-4f6a-aa08-faf2fa51ef33" activeEnvironment="Default" name="almazntesttask"
+                    resourceRoot="" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL"
+                    xmlns:con="http://eviware.com/soapui/config">
+    <con:settings/>
+    <con:interface xsi:type="con:WsdlInterface" id="92e578a8-20e7-48bf-b712-b4bd5dde01a2" wsaVersion="NONE"
+                   name="EmployeeServiceSoapBinding" type="wsdl"
+                   bindingName="{http://endpoint.soap.almazn.com/}EmployeeServiceSoapBinding" soapVersion="1_1"
+                   anonymous="optional" definition="http://localhost:8080/services/employeeservice?wsdl"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <con:settings/>
+        <con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/employeeservice?wsdl">
+            <con:part>
+                <con:url>http://localhost:8080/services/employeeservice?wsdl</con:url>
+                <con:content><![CDATA[<wsdl:definitions name="EmployeeService" targetNamespace="http://endpoint.soap.almazn.com/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://endpoint.soap.almazn.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema elementFormDefault="unqualified" targetNamespace="http://endpoint.soap.almazn.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getDepartmentsStructure" type="tns:getDepartmentsStructure"/>
+      <xs:element name="getDepartmentsStructureResponse" type="tns:getDepartmentsStructureResponse"/>
+      <xs:element name="getEmployees" type="tns:getEmployees"/>
+      <xs:element name="getEmployeesResponse" type="tns:getEmployeesResponse"/>
+      <xs:element name="putEmployee" type="tns:putEmployee"/>
+      <xs:element name="putEmployeeResponse" type="tns:putEmployeeResponse"/>
+      <xs:complexType name="putEmployee">
+        <xs:sequence>
+          <xs:element name="department" type="xs:string"/>
+          <xs:element name="firstName" type="xs:string"/>
+          <xs:element name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+          <xs:element name="gender" type="xs:string"/>
+          <xs:element minOccurs="0" name="driverLicense" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="putEmployeeResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="resultCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDepartmentsStructure">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getDepartmentsStructureResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="mainDepartment" type="tns:departmentDAO"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="departmentDAO">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="department" nillable="true" type="tns:departmentDAO"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getEmployees">
+        <xs:sequence>
+          <xs:element name="department" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getEmployeesResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="resultCode" type="xs:int"/>
+          <xs:element minOccurs="0" name="description" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="employees" type="tns:employee"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="employee">
+        <xs:sequence>
+          <xs:element name="departmentId" type="xs:int"/>
+          <xs:element minOccurs="0" name="driverLicense" type="xs:string"/>
+          <xs:element minOccurs="0" name="firstName" type="xs:string"/>
+          <xs:element minOccurs="0" name="gender" type="tns:gender"/>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="lastName" type="xs:string"/>
+          <xs:element minOccurs="0" name="middleName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="gender">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="MALE"/>
+          <xs:enumeration value="FEMALE"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="putEmployee">
+    <wsdl:part element="tns:putEmployee" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepartmentsStructureResponse">
+    <wsdl:part element="tns:getDepartmentsStructureResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="putEmployeeResponse">
+    <wsdl:part element="tns:putEmployeeResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getDepartmentsStructure">
+    <wsdl:part element="tns:getDepartmentsStructure" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployees">
+    <wsdl:part element="tns:getEmployees" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEmployeesResponse">
+    <wsdl:part element="tns:getEmployeesResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EmployeeServiceEndpoint">
+    <wsdl:operation name="putEmployee">
+      <wsdl:input message="tns:putEmployee" name="putEmployee"></wsdl:input>
+      <wsdl:output message="tns:putEmployeeResponse" name="putEmployeeResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartmentsStructure">
+      <wsdl:input message="tns:getDepartmentsStructure" name="getDepartmentsStructure"></wsdl:input>
+      <wsdl:output message="tns:getDepartmentsStructureResponse" name="getDepartmentsStructureResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployees">
+      <wsdl:input message="tns:getEmployees" name="getEmployees"></wsdl:input>
+      <wsdl:output message="tns:getEmployeesResponse" name="getEmployeesResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EmployeeServiceSoapBinding" type="tns:EmployeeServiceEndpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="putEmployee">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="putEmployee">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="putEmployeeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDepartmentsStructure">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getDepartmentsStructure">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDepartmentsStructureResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEmployees">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEmployees">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEmployeesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EmployeeService">
+    <wsdl:port binding="tns:EmployeeServiceSoapBinding" name="EmployeeServiceEndpointPort">
+      <soap:address location="http://localhost:8080/services/employeeservice"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content>
+                <con:type>http://schemas.xmlsoap.org/wsdl/</con:type>
+            </con:part>
+        </con:definitionCache>
+        <con:endpoints>
+            <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+            <con:endpoint>http://localhost:8080/webApp/services/employeeservice</con:endpoint>
+        </con:endpoints>
+        <con:operation id="3663b91d-1294-4974-96e0-480107f38832" isOneWay="false" action="" name="getEmployees"
+                       bindingOperationName="getEmployees" type="Request-Response" outputName="getEmployeesResponse"
+                       inputName="getEmployees" receivesAttachments="false" sendsAttachments="false"
+                       anonymous="optional">
+            <con:settings/>
+            <con:call id="b352d4f0-3f73-4e30-b155-feba1b5fdb2f" name="getEmployeesSuccess">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:getEmployees>\r
+         <department>Main department|Secondary department 3|Additional department 4</department>\r
+      </end:getEmployees>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/getEmployees"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+            <con:call id="56baf035-7db5-418a-ba74-ed901cd9e68a" name="wrongDepartment">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:getEmployees>\r
+         <department>Wrong department!</department>\r
+      </end:getEmployees>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/getEmployees"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+            <con:call id="efc0f812-6412-4fc6-81d0-6de733bcd75a" name="noEmployeesFound">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:getEmployees>\r
+         <department>Main department|Secondary department 3|Additional department 6|Additional department 7</department>\r
+      </end:getEmployees>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/getEmployees"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+        </con:operation>
+        <con:operation id="f739de94-0631-4769-b464-f101d78a3164" isOneWay="false" action="" name="putEmployee"
+                       bindingOperationName="putEmployee" type="Request-Response" outputName="putEmployeeResponse"
+                       inputName="putEmployee" receivesAttachments="false" sendsAttachments="false"
+                       anonymous="optional">
+            <con:settings/>
+            <con:call id="531001ea-0c42-48ab-af31-529d58dee1bd" name="employeePutSuccess">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:putEmployee>\r
+         <department>Main department|Secondary department 2|Additional department 1</department>\r
+         <firstName>Burlington</firstName>\r
+         <lastName>Copperwire</lastName>\r
+         <!--Optional:-->\r
+         <middleName>Wellington</middleName>\r
+         <gender>MALE</gender>\r
+         <!--Optional:-->\r
+         <driverLicense>32523525</driverLicense>\r
+      </end:putEmployee>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/putEmployee"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+            <con:call id="7afc5177-e720-4e25-bb7c-93bbe9b439d0" name="wrongGender">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:putEmployee>\r
+         <department>Main department|Secondary department 2|Additional department 1</department>\r
+         <firstName>Blasphemy</firstName>\r
+         <lastName>Charizard</lastName>\r
+         <!--Optional:-->\r
+         <middleName></middleName>\r
+         <gender>idontknow</gender>\r
+         <!--Optional:-->\r
+         <driverLicense></driverLicense>\r
+      </end:putEmployee>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/putEmployee"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+            <con:call id="ffb37e15-1b55-49cc-bdc2-022eb53bc12a" name="longNames">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:putEmployee>\r
+         <department>Main department|Secondary department 2|Additional department 1</department>\r
+         <firstName>Blasphemy</firstName>\r
+         <lastName>Charizard</lastName>\r
+         <!--Optional:-->\r
+         <middleName>BlenderdickCurdlemilkSnorkeldinkCumbersnatchBumbleshackNottinghill</middleName>\r
+         <gender>MALE</gender>\r
+         <!--Optional:-->\r
+         <driverLicense></driverLicense>\r
+      </end:putEmployee>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/putEmployee"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+            <con:call id="30b4faf6-07bc-4736-9ada-2b2f9e4cbce3" name="noName">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:putEmployee>\r
+         <department>Main department|Secondary department 2|Additional department 1</department>\r
+         <firstName>Blasphemy</firstName>\r
+         <lastName></lastName>\r
+         <!--Optional:-->\r
+         <middleName>Curdlemilk</middleName>\r
+         <gender>MALE</gender>\r
+         <!--Optional:-->\r
+         <driverLicense>23534622</driverLicense>\r
+      </end:putEmployee>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/putEmployee"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+        </con:operation>
+        <con:operation id="a291e9d7-b7d0-450a-9c34-813648b832aa" isOneWay="false" action=""
+                       name="getDepartmentsStructure" bindingOperationName="getDepartmentsStructure"
+                       type="Request-Response" outputName="getDepartmentsStructureResponse"
+                       inputName="getDepartmentsStructure" receivesAttachments="false" sendsAttachments="false"
+                       anonymous="optional">
+            <con:settings/>
+            <con:call id="ee8b1f41-25b1-4f50-b36f-141c94f21f42" name="structure">
+                <con:settings>
+                    <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/>
+                    </con:setting>
+                </con:settings>
+                <con:encoding>UTF-8</con:encoding>
+                <con:endpoint>http://localhost:8080/services/employeeservice</con:endpoint>
+                <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:end="http://endpoint.soap.almazn.com/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <end:getDepartmentsStructure/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request>
+                <con:credentials>
+                    <con:authType>No Authorization</con:authType>
+                </con:credentials>
+                <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+                <con:jmsPropertyConfig/>
+                <con:wsaConfig mustUnderstand="NONE" version="200508"
+                               action="http://endpoint.soap.almazn.com/EmployeeServiceEndpoint/getDepartmentsStructure"/>
+                <con:wsrmConfig version="1.2"/>
+            </con:call>
+        </con:operation>
+    </con:interface>
+    <con:properties/>
+    <con:wssContainer/>
+    <con:oAuth2ProfileContainer/>
+    <con:oAuth1ProfileContainer/>
+    <con:sensitiveInformation/>
+</con:soapui-project>
